@@ -1,0 +1,53 @@
+{% extends "motion/base.html" %}
+{% load i18n %}
+
+{% block page_id %}group-events{% endblock %}
+{% block head_title %}{% blocktrans with block.super as super %}{{ super }}: Popular Posts{% endblocktrans %}{% endblock %}
+{% block page_layout %}layout-two-column-right{% endblock %}
+
+{% block content_body %}
+    <h2>Recently made popular...</h2>
+
+    <div class="actions">
+
+        {% if page_obj.previous_link %}
+        {% with "top" as position %}
+        {% include "motion/bits/pagination.html" %}
+        {% endwith %}
+        {% endif %}
+
+        <ul class="hfeed">
+        {% for event in favorites %}{% with event.object as entry %}
+            {% include "motion/assets/asset.html" %}
+        {% endwith %}{% endfor %}
+        </ul>
+
+        {% include "motion/bits/pagination.html" %}
+
+    </div><!-- end .actions -->
+{% endblock %}
+
+{% block beta_widgets %}
+
+<div class="widget widget-members">
+    <h3 class="design-highlight-color">
+        {% ifequal following.total_results 1 %}
+            1 Top Member
+        {% else %}
+            {{ following.total_results }} Top Members
+        {% endifequal %}
+    </h3>
+    <div class="widget-content members">
+        <ul>
+        {% for membership in following %}
+            {% with membership.target as member %}
+            {% with 50 as photo_size %}
+                {% include "motion/bits/member_widget_item.html" %}
+            {% endwith %}
+            {% endwith %}
+        {% endfor %}
+        </ul>
+    </div><!-- end .widget-content -->
+</div><!-- end .widget-members -->
+
+{% endblock %}
