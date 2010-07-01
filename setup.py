@@ -24,8 +24,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
     ],
 
-    packages=find_packages(),
-    provides=['motion-popularity'],
+    packages=['popularity'],
     include_package_data=True,
     zip_safe=False,
     requires=['motion>=1.2'],
