@@ -27,6 +27,6 @@ setup(
     packages=['popularity'],
     include_package_data=True,
     zip_safe=False,
-    requires=['motion>=1.2'],
+    requires=['motion(>=1.2)'],
     install_requires=['motion>=1.2'],
 )
