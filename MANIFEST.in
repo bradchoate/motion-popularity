@@ -1,5 +1,5 @@
 global-include *
 global-exclude *.pyc .gitignore MANIFEST.in
-prune typepadapp.egg-info
+prune popularity.egg-info
 prune .git
 prune dist
